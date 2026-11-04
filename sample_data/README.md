@@ -11,7 +11,7 @@ Generated deterministically with fixed random seeds for testing and reproducibil
 - **`order_items.csv`** (9,901 records): Line items mapped 1:N from orders to products, incorporating volume quantities and promotional discounts.
 - **`payments.csv`** (5,000 records): Financial ledger entries matching order amounts, tracking settlement statuses (`success`, `pending`, `failed`).
 
-### Corrupted Test Fixtures (`data/corrupted_fixtures/*.csv`)
+### Corrupted Test Fixtures (`tests/fixtures/corrupted/*.csv`)
 Engineered specifically for Data Quality (DQ) testing and pipeline resilience validation:
 - **`bad_customers.csv`**: Demonstrates missing required fields (empty `first_name`), invalid email regex format, and intentional duplicate customer IDs to test primary key deduplication.
 - **`bad_products.csv`**: Demonstrates negative unit prices (`-150.00`) and negative inventory balances (`-5`).
@@ -25,6 +25,6 @@ Engineered specifically for Data Quality (DQ) testing and pipeline resilience va
 python scripts/generate_data.py --customers 1000 --products 200 --orders 5000
 
 # Generate corrupted demonstration fixtures
-python scripts/generate_bad_data.py --output data/corrupted_fixtures
+python scripts/generate_bad_data.py --output tests/fixtures/corrupted
 ```
 

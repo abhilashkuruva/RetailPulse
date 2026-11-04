@@ -353,14 +353,85 @@ python scripts/verify_qa_scenarios.py
 
 ---
 
-## 11. Master Project Preparation Document (54 Pages)
-For comprehensive technical interview preparation, consult the dedicated master guide:
-- **Markdown Source:** [`docs/project-preparation/RETAILPULSE_MASTER_PROJECT_PREPARATION_GUIDE.md`](docs/project-preparation/RETAILPULSE_MASTER_PROJECT_PREPARATION_GUIDE.md) (105,000+ characters, 30 chapters).
-- **PDF Publication:** [`docs/project-preparation/RETAILPULSE_MASTER_PROJECT_PREPARATION_GUIDE.pdf`](docs/project-preparation/RETAILPULSE_MASTER_PROJECT_PREPARATION_GUIDE.pdf) (**54 verified pages** complete with cover page, headers/footers, and 260 technical Q&A).
+## 11. Project Directory Structure
+```
+RetailPulse/
+├── Dockerfile                      # Production container image for pipeline runner
+├── docker-compose.yaml             # Airflow 2.10 & PostgreSQL container stack
+├── pyproject.toml                  # Python package metadata and pytest markers
+├── requirements.txt                # Pinned production and test dependencies
+├── .env.example                    # Template environment configuration
+├── .gitignore                      # Git exclusion rules
+├── LICENSE                         # MIT License
+├── README.md                       # Main project documentation
+│
+├── src/retailpulse/                # Core Python package
+│   ├── config/settings.py          # Pydantic Settings management
+│   ├── ingestion/                  # Extractor, exporter, GCS, BigQuery, orchestrator
+│   ├── monitoring/                 # Watermark audit ledger & pipeline tracker
+│   ├── quality/validators.py       # Pre-landing validation contracts
+│   └── utils/                      # Structured logger and exception taxonomy
+│
+├── database/                       # MySQL operational database
+│   ├── schema.sql                  # OLTP DDL and indexing strategies
+│   └── seed.sql                    # Initial synthetic transaction records
+│
+├── airflow/                        # Workflow orchestration
+│   ├── dags/retailpulse_pipeline.py# Daily batch DAG with linear task gating
+│   ├── plugins/                    # Airflow custom plugins
+│   └── config/                     # Airflow configurations
+│
+├── dbt/retailpulse_dbt/            # dbt Medallion data warehouse models
+│   ├── models/staging/             # Silver cleansed and typed views
+│   ├── models/intermediate/        # Enriched business joins and rollups
+│   ├── models/marts/               # Gold Star-Schema dimensions and facts
+│   ├── macros/                     # Reusable SQL transformation macros
+│   └── tests/                      # Business integrity assertions
+│
+├── infrastructure/                 # Infrastructure as Code
+│   ├── docker/                     # Dockerfile.airflow and container definitions
+│   └── gcp/                        # Terraform templates (GCS, BigQuery, IAM)
+│
+├── dashboard/                      # Business Intelligence & Serving
+│   ├── app.py                      # Interactive Streamlit dashboard
+│   └── looker_views.sql            # Curated Looker Studio SQL views
+│
+├── scripts/                        # Automation & verification scripts
+│   ├── init_database.py            # MySQL schema setup
+│   ├── load_data.py                # Synthetic dataset seeder
+│   ├── run_pipeline.py             # CLI pipeline orchestrator
+│   └── verify_qa_scenarios.py      # Automated 10-scenario human QA suite
+│
+├── tests/                          # Automated testing suite
+│   ├── fixtures/corrupted/         # Dirty datasets for quality testing
+│   ├── unit/                       # Unit tests (mocked & in-memory)
+│   └── integration/                # Integration tests (MySQL & pipeline)
+│
+└── docs/                           # Technical documentation & reports
+    ├── architecture/ARCHITECTURE.md# System architecture & Medallion specs
+    ├── setup/SETUP_GUIDE.md        # Comprehensive local & GCP setup guide
+    ├── reports/                    # Audit & validation reports
+    │   ├── PROJECT_DIRECTORY_AUDIT_REPORT.md
+    │   ├── FINAL_IMPLEMENTATION_REPORT.md
+    │   └── MANUAL_QA_REPORT.md
+    └── project-preparation/        # Master 54-Page Deloitte Interview Guide
+        ├── RETAILPULSE_MASTER_PROJECT_PREPARATION_GUIDE.md
+        └── RETAILPULSE_MASTER_PROJECT_PREPARATION_GUIDE.pdf
+```
 
 ---
 
-## 12. Security & Credentials
+## 12. Technical Documentation & Interview Preparation
+- **Master Preparation Guide (54 Pages):**
+  - Markdown: [`docs/project-preparation/RETAILPULSE_MASTER_PROJECT_PREPARATION_GUIDE.md`](docs/project-preparation/RETAILPULSE_MASTER_PROJECT_PREPARATION_GUIDE.md)
+  - PDF: [`docs/project-preparation/RETAILPULSE_MASTER_PROJECT_PREPARATION_GUIDE.pdf`](docs/project-preparation/RETAILPULSE_MASTER_PROJECT_PREPARATION_GUIDE.pdf) (54 verified pages, 30 chapters, 260 technical Q&A).
+- **System Architecture Spec:** [`docs/architecture/ARCHITECTURE.md`](docs/architecture/ARCHITECTURE.md)
+- **Setup & Deployment Guide:** [`docs/setup/SETUP_GUIDE.md`](docs/setup/SETUP_GUIDE.md)
+- **Directory Audit Report:** [`docs/reports/PROJECT_DIRECTORY_AUDIT_REPORT.md`](docs/reports/PROJECT_DIRECTORY_AUDIT_REPORT.md)
+
+---
+
+## 13. Security & Credentials
 - All secrets are managed strictly through environment variables.
 - `.env`, service account JSON keys, and data exports are permanently excluded in `.gitignore`.
 - Production pipelines should authenticate via **Google Cloud Workload Identity Federation** or Application Default Credentials (ADC).
@@ -368,5 +439,5 @@ For comprehensive technical interview preparation, consult the dedicated master 
 
 ---
 
-## 13. License
+## 14. License
 This project is open-source under the [MIT License](LICENSE).

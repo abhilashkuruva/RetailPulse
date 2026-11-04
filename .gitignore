@@ -1,19 +1,54 @@
+# Secrets and environment configurations
 .env
-*.json
-!.vscode/*.json
+.env.local
+credentials/
+*.pem
+*.key
+
+# Compiled bytecode and cache directories
 __pycache__/
+*.py[cod]
+*$py.class
 .pytest_cache/
 .ruff_cache/
-*.py[cod]
+.coverage
+htmlcov/
+
+# Python packaging and virtual environments
 .venv/
+env/
+venv/
 build/
 dist/
 *.egg-info/
+
+# Pipeline generated datasets (raw files & local mocks)
 data/exports/
 data/gcs_mock/
-airflow/logs/*
-airflow/plugins/*
+*.log
+
+# Airflow runtime artifacts
+airflow/logs/
+airflow/airflow.cfg
+airflow/airflow.db
+!airflow/plugins/.gitkeep
+!airflow/config/.gitkeep
+
+# dbt compilation targets and logs
 dbt/retailpulse_dbt/target/
 dbt/retailpulse_dbt/logs/
-credentials/
-*.log
+dbt/retailpulse_dbt/dbt_packages/
+!dbt/retailpulse_dbt/seeds/.gitkeep
+!dbt/retailpulse_dbt/analyses/.gitkeep
+
+# Terraform local state
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+
+# IDE and OS files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

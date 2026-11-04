@@ -156,7 +156,12 @@ def generate_bad_data(output_dir: Path) -> None:
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Generate bad records for testing data quality filters.")
-    parser.add_argument("--output", type=Path, default=Path("data/corrupted_fixtures"))
+    parser.add_argument(
+        "--output",
+        type=Path,
+        default=Path("tests/fixtures/corrupted"),
+        help="Target folder for anomalous/corrupted CSV files.",
+    )
     args = parser.parse_args()
     generate_bad_data(args.output)
 
