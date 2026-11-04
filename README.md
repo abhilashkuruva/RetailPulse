@@ -223,12 +223,6 @@ retailpulse-gcp-data-engineering/
 │   ├── unit/                      # Pytest unit tests (settings, export, gcs, watermark)
 │   └── integration/               # Integration tests (MySQL DB, end-to-end pipeline)
 │
-├── docs/                          # Comprehensive Documentation
-│   ├── qa/MANUAL_QA_REPORT.md     # Full empirical report of 10 human QA scenarios
-│   └── project-preparation/
-│       ├── RETAILPULSE_MASTER_PROJECT_PREPARATION_GUIDE.md  # 30-chapter Master Guide (105k chars)
-│       └── RETAILPULSE_MASTER_PROJECT_PREPARATION_GUIDE.pdf # 54-page candidate interview handbook
-│
 └── dashboard/                     # Looker Studio Business Intelligence
     ├── README.md                  # Dashboard layout, metrics & connection instructions
     └── looker_views.sql           # Curated flat reporting SQL views
@@ -411,32 +405,11 @@ RetailPulse/
 │   ├── fixtures/corrupted/         # Dirty datasets for quality testing
 │   ├── unit/                       # Unit tests (mocked & in-memory)
 │   └── integration/                # Integration tests (MySQL & pipeline)
-│
-└── docs/                           # Technical documentation & reports
-    ├── architecture/ARCHITECTURE.md# System architecture & Medallion specs
-    ├── setup/SETUP_GUIDE.md        # Comprehensive local & GCP setup guide
-    ├── reports/                    # Audit & validation reports
-    │   ├── PROJECT_DIRECTORY_AUDIT_REPORT.md
-    │   ├── FINAL_IMPLEMENTATION_REPORT.md
-    │   └── MANUAL_QA_REPORT.md
-    └── project-preparation/        # Master 54-Page Deloitte Interview Guide
-        ├── RETAILPULSE_MASTER_PROJECT_PREPARATION_GUIDE.md
-        └── RETAILPULSE_MASTER_PROJECT_PREPARATION_GUIDE.pdf
 ```
 
 ---
 
-## 12. Technical Documentation & Interview Preparation
-- **Master Preparation Guide (54 Pages):**
-  - Markdown: [`docs/project-preparation/RETAILPULSE_MASTER_PROJECT_PREPARATION_GUIDE.md`](docs/project-preparation/RETAILPULSE_MASTER_PROJECT_PREPARATION_GUIDE.md)
-  - PDF: [`docs/project-preparation/RETAILPULSE_MASTER_PROJECT_PREPARATION_GUIDE.pdf`](docs/project-preparation/RETAILPULSE_MASTER_PROJECT_PREPARATION_GUIDE.pdf) (54 verified pages, 30 chapters, 260 technical Q&A).
-- **System Architecture Spec:** [`docs/architecture/ARCHITECTURE.md`](docs/architecture/ARCHITECTURE.md)
-- **Setup & Deployment Guide:** [`docs/setup/SETUP_GUIDE.md`](docs/setup/SETUP_GUIDE.md)
-- **Directory Audit Report:** [`docs/reports/PROJECT_DIRECTORY_AUDIT_REPORT.md`](docs/reports/PROJECT_DIRECTORY_AUDIT_REPORT.md)
-
----
-
-## 13. Security & Credentials
+## 12. Security & Credentials
 - All secrets are managed strictly through environment variables.
 - `.env`, service account JSON keys, and data exports are permanently excluded in `.gitignore`.
 - Production pipelines should authenticate via **Google Cloud Workload Identity Federation** or Application Default Credentials (ADC).
@@ -444,5 +417,5 @@ RetailPulse/
 
 ---
 
-## 14. License
+## 13. License
 This project is open-source under the [MIT License](LICENSE).
