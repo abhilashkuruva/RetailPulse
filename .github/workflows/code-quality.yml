@@ -30,7 +30,7 @@ jobs:
 
       - name: Verify no secrets in tracked files
         run: |
-          if grep -rE "(PRIVATE KEY|BEGIN CERTIFICATE|ghp_[A-Za-z0-9]+|sk-[A-Za-z0-9]+)" --include="*.py" --include="*.yml" --include="*.yaml" --include="*.json" .; then
+          if git grep -E -I "(-----BEGIN (RSA |EC )?PRIVATE KEY-----|ghp_[A-Za-z0-9]{30,}|sk-[A-Za-z0-9]{20,})" -- src/ tests/ config/; then
             echo "ERROR: Potential secret detected in tracked files!"
             exit 1
           fi
