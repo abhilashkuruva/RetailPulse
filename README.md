@@ -12,7 +12,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 > **Live Streamlit Dashboard:** `https://retailpulse-live.streamlit.app` *(Streamlit Community Cloud)*  
-> **Live FastAPI REST API:** `https://retailpulse-api.onrender.com` *(Render.com)*  
+> **Live FastAPI REST API:** [https://retailpulse-1p48.onrender.com](https://retailpulse-1p48.onrender.com) *(Render.com)*  
+> **API Interactive Docs:** [https://retailpulse-1p48.onrender.com/docs](https://retailpulse-1p48.onrender.com/docs) *(Swagger UI)*  
 > **GitHub Repository:** [github.com/abhilashkuruva/RetailPulse](https://github.com/abhilashkuruva/RetailPulse)  
 > **Prepared for:** Candidate portfolio & interview preparation for **T&T | EAID | Engineering | GCP Data Engineer (Deloitte India)**.
 

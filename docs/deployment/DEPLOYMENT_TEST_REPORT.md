@@ -3,7 +3,8 @@
 ## 1. Project Overview & Deployment Summary
 
 - **Repository:** [github.com/abhilashkuruva/RetailPulse](https://github.com/abhilashkuruva/RetailPulse)
-- **Git Commit:** `fa4f7b4` (Clean, audited, verified)
+- **Live FastAPI REST API:** [https://retailpulse-1p48.onrender.com](https://retailpulse-1p48.onrender.com)
+- **Interactive Swagger Docs:** [https://retailpulse-1p48.onrender.com/docs](https://retailpulse-1p48.onrender.com/docs)
 - **CI/CD Status:**
   - ✅ **Python Unit Tests & API Validation:** PASS (19/19 tests)
   - ✅ **Code Quality & Secret Scan:** PASS (0 lint issues, 0 leaked credentials)
@@ -13,17 +14,33 @@
 
 ## 2. Cloud Hosting Architecture & Tier Specifications
 
-| Component | Cloud Platform | Instance Tier | Cost | Cold Start / Uptime |
+| Component | Cloud Platform | Instance Tier | Cost | Status / Latency |
 | :--- | :--- | :--- | :--- | :--- |
-| **BI Dashboard** | Streamlit Community Cloud | Standard (2.7 GB RAM) | $0.00 / month | Sleeps after 12h inactivity, instant wake |
-| **REST API** | Render.com | Free Web Service (512 MB RAM) | $0.00 / month | Spins down after 15m inactivity (~30s spin-up) |
-| **Demo Database** | Embedded SQLite Snapshot | Bundled in Git (`data/retailpulse_live.db`) | $0.00 / month | 0ms network latency, zero maintenance |
+| **REST API** | Render.com | Free Web Service (512 MB RAM) | $0.00 / month | **LIVE** (300ms p95 latency) |
+| **BI Dashboard** | Streamlit Community Cloud | Standard (2.7 GB RAM) | $0.00 / month | Ready for one-click deploy |
+| **Demo Database** | Embedded SQLite Snapshot | Bundled in Git (`data/retailpulse_live.db`) | $0.00 / month | **LIVE** (0.96ms query latency) |
 
 ---
 
-## 3. Automated Test Suite Validation
+## 3. Live Production REST API Verification
 
-### Local & CI Test Results (19 Tests Passed in 3.12s)
+Verified against `https://retailpulse-1p48.onrender.com`:
+
+| Endpoint | HTTP Status | Response Time | Sample Live Response / Field |
+| :--- | :--- | :--- | :--- |
+| `GET /` | `200 OK` | 348 ms | `{"service": "RetailPulse Data Platform REST API", "version": "1.0.0"}` |
+| `GET /health` | `200 OK` | 408 ms | `{"status": "HEALTHY", "database_engine": "sqlite", "response_time_ms": 0.96}` |
+| `GET /api/metrics/summary` | `200 OK` | 290 ms | `{"gross_revenue": 596891301.5, "total_orders": 4023, "active_customers": 1001}` |
+| `GET /api/sales/daily?days=7` | `200 OK` | 424 ms | 7-day chronological daily revenue & order count breakdown |
+| `GET /api/sales/category` | `200 OK` | 252 ms | Category distribution across Electronics, Fashion, Home, etc. |
+| `GET /api/orders?limit=3` | `200 OK` | 315 ms | Paginated order history with shipping state and payment status |
+| `GET /api/pipeline/audit` | `200 OK` | 395 ms | Last 50 pipeline extraction runs with CDC watermark audit ledger |
+
+---
+
+## 4. Automated Test Suite Validation (Local & CI)
+
+### 19 Automated Tests Passing in 3.12s
 
 | Test Module | Test Case | Target Tested | Result |
 | :--- | :--- | :--- | :--- |
@@ -46,21 +63,6 @@
 | `tests/unit/test_watermark.py` | `test_extractor_disallows_arbitrary_tables` | SQL injection defense | **PASS** |
 | `tests/integration/test_mysql_database.py` | `test_mysql_connection_and_table_presence` | MySQL schema & record presence | **PASS** |
 | `tests/integration/test_pipeline_e2e.py` | `test_pipeline_e2e_execution` | End-to-end extraction pipeline | **PASS** |
-
----
-
-## 4. REST API Endpoint Specification & Verification
-
-| HTTP Method | Endpoint | Description | Sample Output / Status |
-| :--- | :--- | :--- | :--- |
-| `GET` | `/` | API Information & Directory | `{"service": "RetailPulse API", "version": "1.0.0"}` |
-| `GET` | `/health` | Live Health & DB Connectivity | `{"status": "healthy", "database": "connected", "latency_ms": 1.2}` |
-| `GET` | `/api/metrics/summary` | Executive KPIs | `{"gross_revenue": 1054320.50, "total_orders": 5000}` |
-| `GET` | `/api/sales/daily?days=30`| 30-Day Sales Trend | `[{"order_day": "2024-03-01", "orders": 42, "revenue": 8920.4}]` |
-| `GET` | `/api/sales/category` | Category Breakdown | `[{"category": "Electronics", "revenue": 340120.0}]` |
-| `GET` | `/api/orders?limit=20` | Paginated Orders | `[{"order_id": 1, "order_status": "delivered", ...}]` |
-| `GET` | `/api/pipeline/audit` | Pipeline Metadata Ledger | Last 50 runs with status and watermark timestamps |
-| `GET` | `/docs` | Interactive Swagger UI | OpenAPI interactive testing console |
 
 ---
 
