@@ -1,7 +1,7 @@
 # RetailPulse: GitHub Publishing & Deployment Guide
 
 ## 1. GitHub Repository Information
-- **Repository:** [github.com/Kuruva-abhilash/RetailPulse](https://github.com/Kuruva-abhilash/RetailPulse)
+- **Repository:** [github.com/abhilashkuruva/RetailPulse](https://github.com/abhilashkuruva/RetailPulse)
 - **Visibility:** Public (required for Streamlit Community Cloud free tier)
 - **Default Branch:** `master`
 - **Git Author:** Kuruva_abhilash <srinivasabhilash8210@gmail.com>
@@ -82,8 +82,8 @@ git push origin master
 
 ### Workflow Badges (add to README):
 ```markdown
-[![Tests](https://github.com/Kuruva-abhilash/RetailPulse/actions/workflows/python-tests.yml/badge.svg)](https://github.com/Kuruva-abhilash/RetailPulse/actions)
-[![Code Quality](https://github.com/Kuruva-abhilash/RetailPulse/actions/workflows/code-quality.yml/badge.svg)](https://github.com/Kuruva-abhilash/RetailPulse/actions)
+[![Tests](https://github.com/abhilashkuruva/RetailPulse/actions/workflows/python-tests.yml/badge.svg)](https://github.com/abhilashkuruva/RetailPulse/actions)
+[![Code Quality](https://github.com/abhilashkuruva/RetailPulse/actions/workflows/code-quality.yml/badge.svg)](https://github.com/abhilashkuruva/RetailPulse/actions)
 ```
 
 ---
@@ -103,7 +103,7 @@ Before every push to public GitHub, verify:
 ## 7. Setting Up a Fresh Clone
 
 ```bash
-git clone https://github.com/Kuruva-abhilash/RetailPulse.git
+git clone https://github.com/abhilashkuruva/RetailPulse.git
 cd RetailPulse
 
 # Create virtual environment

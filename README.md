@@ -1,6 +1,8 @@
 # RetailPulse: Autonomous End-to-End GCP E-Commerce Data Engineering Platform
 
 [![Python 3.11+](https://img.shields.io/badge/python-3.11%20%7C%203.12%20%7C%203.13-blue.svg)](https://www.python.org/)
+[![Tests](https://github.com/abhilashkuruva/RetailPulse/actions/workflows/python-tests.yml/badge.svg)](https://github.com/abhilashkuruva/RetailPulse/actions)
+[![Code Quality](https://github.com/abhilashkuruva/RetailPulse/actions/workflows/code-quality.yml/badge.svg)](https://github.com/abhilashkuruva/RetailPulse/actions)
 [![Database](https://img.shields.io/badge/database-MySQL%208.0-orange.svg)](https://www.mysql.com/)
 [![Cloud](https://img.shields.io/badge/cloud-Google%20Cloud%20Platform-red.svg)](https://cloud.google.com/)
 [![Warehouse](https://img.shields.io/badge/warehouse-BigQuery-blue.svg)](https://cloud.google.com/bigquery)
@@ -9,7 +11,9 @@
 [![Docker](https://img.shields.io/badge/containers-Docker%20Compose-2496ED.svg)](https://www.docker.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-> **Subtitle:** Production-Style E-Commerce Batch Data Engineering, Incremental ELT, and Analytics Platform on Google Cloud.  
+> **Live Streamlit Dashboard:** `https://retailpulse-live.streamlit.app` *(Streamlit Community Cloud)*  
+> **Live FastAPI REST API:** `https://retailpulse-api.onrender.com` *(Render.com)*  
+> **GitHub Repository:** [github.com/abhilashkuruva/RetailPulse](https://github.com/abhilashkuruva/RetailPulse)  
 > **Prepared for:** Candidate portfolio & interview preparation for **T&T | EAID | Engineering | GCP Data Engineer (Deloitte India)**.
 
 ---

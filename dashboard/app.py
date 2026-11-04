@@ -30,8 +30,8 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded",
     menu_items={
-        "Get Help": "https://github.com/Kuruva-abhilash/RetailPulse",
-        "Report a bug": "https://github.com/Kuruva-abhilash/RetailPulse/issues",
+        "Get Help": "https://github.com/abhilashkuruva/RetailPulse",
+        "Report a bug": "https://github.com/abhilashkuruva/RetailPulse/issues",
         "About": "RetailPulse: Production-Style GCP Data Engineering Platform | Deloitte GCP Portfolio",
     },
 )
@@ -168,7 +168,7 @@ with st.sidebar:
     st.markdown("---")
     st.markdown(
         "[![GitHub](https://img.shields.io/badge/GitHub-RetailPulse-black?logo=github)]"
-        "(https://github.com/Kuruva-abhilash/RetailPulse)"
+        "(https://github.com/abhilashkuruva/RetailPulse)"
     )
 
 # ─── KPIs ────────────────────────────────────────────────────────────────────

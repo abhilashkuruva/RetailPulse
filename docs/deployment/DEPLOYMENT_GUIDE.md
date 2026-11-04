@@ -9,7 +9,7 @@
 ### Step-by-Step
 
 1. **Go to** https://share.streamlit.io → **New app**
-2. **Connect GitHub:** Select `Kuruva-abhilash/RetailPulse`
+2. **Connect GitHub:** Select `abhilashkuruva/RetailPulse`
 3. **Branch:** `master`
 4. **Main file path:** `dashboard/app.py`
 5. **App URL:** Choose something like `retailpulse-dashboard`
@@ -37,7 +37,7 @@ Streamlit Community Cloud will:
 ### Step-by-Step
 
 1. **Go to** https://dashboard.render.com → **New** → **Web Service**
-2. **Connect GitHub:** Select `Kuruva-abhilash/RetailPulse`
+2. **Connect GitHub:** Select `abhilashkuruva/RetailPulse`
 3. Render will auto-detect the `render.yaml` — click **Apply**
 
    Or configure manually:
