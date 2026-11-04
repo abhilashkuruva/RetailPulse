@@ -100,3 +100,4 @@
 - **Render.com:** Set a **Budget Alert** in Render dashboard under Billing → Budget. Set to $0 to get notified before any charges.
 - **Streamlit Community Cloud:** No billing settings needed — genuinely free for public repos.
 - **Google Cloud (if connected):** Set a **Budget Alert** at $1 in GCP Console → Billing → Budgets & Alerts. Enable automatic cost controls.
+

@@ -139,3 +139,4 @@
 - CORS on FastAPI API restricted to specific origins in production
 - HTTPS enforced by both Streamlit Cloud and Render.com
 - Database admin interfaces not exposed publicly
+

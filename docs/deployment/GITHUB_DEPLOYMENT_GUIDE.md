@@ -127,3 +127,4 @@ python scripts/load_data.py
 # Run the dashboard locally
 python -m streamlit run dashboard/app.py
 ```
+

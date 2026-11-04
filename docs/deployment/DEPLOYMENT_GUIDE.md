@@ -115,3 +115,4 @@ USE_SQLITE=true uvicorn retailpulse.api.main:app --reload --port 8000
 # Full pipeline with live MySQL
 python scripts/run_pipeline.py --mode full
 ```
+
