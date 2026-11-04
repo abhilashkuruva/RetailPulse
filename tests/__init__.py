@@ -1,1 +1,2 @@
 """RetailPulse test suite package."""
+

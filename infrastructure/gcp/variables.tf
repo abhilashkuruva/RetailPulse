@@ -39,3 +39,4 @@ variable "analytics_dataset_id" {
   type        = string
   default     = "retailpulse_dbt"
 }
+

@@ -139,3 +139,4 @@ flowchart LR
 - **Zero Hardcoded Credentials**: Configured via Pydantic `SettingsConfigDict` reading from environment variables (`.env`).
 - **GCP Least Privilege**: Dedicated service account (`retailpulse-pipeline-runner`) restricted to `storage.objectAdmin`, `bigquery.dataEditor`, and `bigquery.jobUser`.
 - **Audit Trails**: Source table `pipeline_metadata` and BigQuery metadata columns record batch ID, record count, execution status, and latency.
+

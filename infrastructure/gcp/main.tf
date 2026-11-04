@@ -109,3 +109,4 @@ resource "google_project_iam_member" "bq_job_user" {
   role    = "roles/bigquery.jobUser"
   member  = "serviceAccount:${google_service_account.pipeline_runner.email}"
 }
+

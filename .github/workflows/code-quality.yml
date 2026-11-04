@@ -13,16 +13,25 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Python
+      - name: Set up Python 3.11
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+          cache: "pip"
 
-      - name: Install Ruff
-        run: pip install ruff
-
-      - name: Check code with Ruff
+      - name: Install linting dependencies
         run: |
-          ruff check src tests
-          ruff format --check src tests
+          python -m pip install --upgrade pip
+          pip install ruff>=0.6
 
+      - name: Run Ruff linter (PEP8, import order, type hints)
+        run: |
+          python -m ruff check src tests --output-format=github
+
+      - name: Verify no secrets in tracked files
+        run: |
+          if grep -rE "(PRIVATE KEY|BEGIN CERTIFICATE|ghp_[A-Za-z0-9]+|sk-[A-Za-z0-9]+)" --include="*.py" --include="*.yml" --include="*.yaml" --include="*.json" .; then
+            echo "ERROR: Potential secret detected in tracked files!"
+            exit 1
+          fi
+          echo "No secrets detected in source files."

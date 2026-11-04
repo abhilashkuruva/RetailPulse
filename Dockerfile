@@ -32,3 +32,4 @@ COPY dashboard/ ./dashboard/
 # Default entrypoint runs the pipeline orchestrator
 ENTRYPOINT ["python", "scripts/run_pipeline.py"]
 CMD ["--mode", "full"]
+

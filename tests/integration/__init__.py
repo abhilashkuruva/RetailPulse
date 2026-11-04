@@ -1,1 +1,2 @@
 """RetailPulse integration test suite."""
+

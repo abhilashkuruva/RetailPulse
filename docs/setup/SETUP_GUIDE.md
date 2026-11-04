@@ -152,3 +152,4 @@ Access the Airflow UI at `http://localhost:8080` (Username: `airflow`, Password:
 | `Access denied for user 'root'@'localhost'` | Wrong password specified in `.env`. | Verify password in `.env` matches your MySQL root account password. |
 | `Connection refused: localhost:8080` | Docker Desktop is not running. | Start Docker Desktop or use local Python CLI runner (`python scripts/run_pipeline.py`). |
 | `Unknown pytest mark 'unit'` | Custom markers not registered in test runner config. | Ensure markers are declared in `pyproject.toml` under `[tool.pytest.ini_options]`. |
+

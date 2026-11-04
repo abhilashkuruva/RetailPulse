@@ -22,3 +22,4 @@ output "service_account_email" {
   description = "The email address of the pipeline runner service account"
   value       = google_service_account.pipeline_runner.email
 }
+

@@ -27,3 +27,4 @@ terraform plan -var="project_id=YOUR_PROJECT_ID"
 # Provision resources
 terraform apply -var="project_id=YOUR_PROJECT_ID"
 ```
+
