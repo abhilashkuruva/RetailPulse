@@ -1,0 +1,4 @@
+customer_id,first_name,last_name,email,phone,city,state,country,registration_date,created_at,updated_at
+999901,,GhostUser,invalid-email-format,00000,UnknownCity,UnknownState,Nowhere,2099-01-01,2099-01-01 00:00:00,2099-01-01 00:00:00
+999902,Duplicate,Customer,duplicate@example.test,+919800000000,Bengaluru,Karnataka,India,2025-01-01,2025-01-01 00:00:00,2025-01-01 00:00:00
+999902,DuplicateSecond,Customer,duplicate2@example.test,+919800000001,Bengaluru,Karnataka,India,2025-01-01,2025-01-01 00:00:00,2025-01-01 00:00:00

@@ -1,0 +1,33 @@
+services:
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: airflow
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "airflow"]
+      interval: 10s
+      retries: 5
+    volumes: [postgres-db-volume:/var/lib/postgresql/data]
+
+  airflow:
+    image: apache/airflow:2.10.3
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports: ["8080:8080"]
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
+      AIRFLOW__CORE__LOAD_EXAMPLES: "false"
+      AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: "true"
+      _PIP_ADDITIONAL_REQUIREMENTS: "-e /opt/retailpulse"
+    volumes:
+      - ./airflow/dags:/opt/airflow/dags
+      - ./:/opt/retailpulse
+    command: standalone
+    restart: unless-stopped
+
+volumes:
+  postgres-db-volume:

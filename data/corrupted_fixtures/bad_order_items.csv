@@ -1,0 +1,3 @@
+order_item_id,order_id,product_id,quantity,unit_price,discount_amount,created_at,updated_at
+666601,777701,1,-2,999.0,0,2025-06-01 10:00:00,2025-06-01 10:00:00
+666602,777701,1,0,999.0,0,2025-06-01 10:00:00,2025-06-01 10:00:00

@@ -1,0 +1,92 @@
+version: 2
+
+models:
+  - name: stg_customers
+    description: "Cleansed and standardized customer dimension view"
+    columns:
+      - name: customer_id
+        description: "Primary key for customer master"
+        tests:
+          - unique
+          - not_null
+      - name: email
+        description: "Customer email in lowercase trimmed format"
+        tests:
+          - not_null
+
+  - name: stg_products
+    description: "Cleansed and typed merchandise catalog view with calculated markup"
+    columns:
+      - name: product_id
+        description: "Primary key for merchandise products"
+        tests:
+          - unique
+          - not_null
+      - name: category
+        description: "Product category"
+        tests:
+          - not_null
+      - name: unit_price
+        description: "Standard retail price"
+        tests:
+          - not_null
+
+  - name: stg_orders
+    description: "Cleansed order header transactions with standardized statuses"
+    columns:
+      - name: order_id
+        description: "Primary key for transaction order"
+        tests:
+          - unique
+          - not_null
+      - name: customer_id
+        description: "Foreign key reference to customers"
+        tests:
+          - not_null
+      - name: order_status
+        description: "Order status (confirmed, shipped, delivered, cancelled, returned, pending)"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['pending', 'confirmed', 'shipped', 'delivered', 'cancelled', 'returned']
+
+  - name: stg_order_items
+    description: "Cleansed order line-items with gross and net financial calculations"
+    columns:
+      - name: order_item_id
+        description: "Primary key for order line items"
+        tests:
+          - unique
+          - not_null
+      - name: order_id
+        description: "Foreign key reference to order header"
+        tests:
+          - not_null
+      - name: product_id
+        description: "Foreign key reference to products"
+        tests:
+          - not_null
+      - name: quantity
+        description: "Purchased units"
+        tests:
+          - not_null
+
+  - name: stg_payments
+    description: "Cleansed payment gateway settlements and status flags"
+    columns:
+      - name: payment_id
+        description: "Primary key for financial payment record"
+        tests:
+          - unique
+          - not_null
+      - name: order_id
+        description: "Foreign key reference to order header"
+        tests:
+          - not_null
+      - name: payment_status
+        description: "Gateway settlement status"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['success', 'pending', 'failed', 'refunded']
+

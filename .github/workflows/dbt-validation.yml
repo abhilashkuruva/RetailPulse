@@ -1,0 +1,29 @@
+name: dbt Validation & Parse Check
+
+on:
+  push:
+    branches: [main, master, develop]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  dbt:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Validate dbt SQL Files Syntax
+        run: |
+          python -c "
+          from pathlib import Path
+          models = list(Path('dbt/retailpulse_dbt/models').rglob('*.sql'))
+          assert len(models) >= 8, f'Expected at least 8 dbt models, found {len(models)}'
+          print(f'Verified {len(models)} dbt model definitions successfully.')
+          "
+

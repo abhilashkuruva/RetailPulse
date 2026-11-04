@@ -1,0 +1,14 @@
+name: retailpulse_dbt
+version: "1.0.0"
+config-version: 2
+profile: retailpulse
+model-paths: ["models"]
+test-paths: ["tests"]
+models:
+  retailpulse_dbt:
+    staging:
+      +materialized: view
+    intermediate:
+      +materialized: view
+    marts:
+      +materialized: table

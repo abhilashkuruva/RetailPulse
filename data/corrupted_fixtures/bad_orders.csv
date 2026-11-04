@@ -1,0 +1,2 @@
+order_id,customer_id,order_date,order_status,payment_method,shipping_city,shipping_state,created_at,updated_at
+777701,9999999,2025-06-01 10:00:00,UNKNOWN_GARBAGE_STATUS,BITCOIN,Atlantis,Ocean,2025-06-01 10:00:00,2025-06-01 10:00:00

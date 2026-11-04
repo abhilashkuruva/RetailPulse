@@ -1,0 +1,94 @@
+version: 2
+
+models:
+  - name: fct_orders
+    description: "Core sales order transactions fact table with incremental merge logic and daily partitions"
+    columns:
+      - name: order_id
+        description: "Primary key of order transaction"
+        tests:
+          - unique
+          - not_null
+      - name: customer_id
+        description: "Foreign key referencing dim_customers"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_customers')
+              field: customer_id
+      - name: order_status
+        description: "Order fulfillment status"
+        tests:
+          - not_null
+      - name: total_amount
+        description: "Net order transaction total"
+        tests:
+          - not_null
+
+  - name: fct_payments
+    description: "Payment transaction ledger fact table partitioned by transaction date"
+    columns:
+      - name: payment_id
+        description: "Primary key of payment transaction"
+        tests:
+          - unique
+          - not_null
+      - name: order_id
+        description: "Foreign key referencing fct_orders"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('fct_orders')
+              field: order_id
+
+  - name: dim_customers
+    description: "Customer master dimension table enriched with lifetime spend and loyalty segments"
+    columns:
+      - name: customer_id
+        description: "Primary key of customer"
+        tests:
+          - unique
+          - not_null
+      - name: email
+        description: "Customer email address"
+        tests:
+          - not_null
+
+  - name: dim_products
+    description: "Merchandise catalog dimension table with unit economics and stock health"
+    columns:
+      - name: product_id
+        description: "Primary key of product"
+        tests:
+          - unique
+          - not_null
+      - name: category
+        description: "Merchandise category"
+        tests:
+          - not_null
+
+  - name: mart_daily_sales
+    description: "Daily aggregated business sales metrics grouped by date, city, and payment instrument"
+    columns:
+      - name: sale_date
+        description: "Sales calendar day"
+        tests:
+          - not_null
+
+  - name: mart_monthly_sales
+    description: "Executive monthly performance mart with month-over-month (MoM) revenue trajectory"
+    columns:
+      - name: sale_month
+        description: "First day of the reporting calendar month"
+        tests:
+          - not_null
+
+  - name: mart_customer_analytics
+    description: "Customer RFM persona and behavioral segmentation mart for retention marketing"
+    columns:
+      - name: customer_id
+        description: "Customer unique identifier"
+        tests:
+          - unique
+          - not_null
+

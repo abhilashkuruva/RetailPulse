@@ -1,0 +1,58 @@
+version: 2
+
+sources:
+  - name: retailpulse_raw
+    description: "Raw change data capture (CDC) datasets ingested from MySQL via Google Cloud Storage"
+    schema: "{{ env_var('BIGQUERY_RAW_DATASET', 'retailpulse_raw') }}"
+    tables:
+      - name: customers
+        description: "Raw customer registration profile records"
+        columns:
+          - name: customer_id
+            tests:
+              - not_null
+              - unique
+          - name: email
+            tests:
+              - not_null
+
+      - name: products
+        description: "Raw product inventory and catalog master"
+        columns:
+          - name: product_id
+            tests:
+              - not_null
+              - unique
+
+      - name: orders
+        description: "Raw transactional purchase orders partitioned by order date"
+        columns:
+          - name: order_id
+            tests:
+              - not_null
+              - unique
+          - name: customer_id
+            tests:
+              - not_null
+
+      - name: order_items
+        description: "Raw purchase order line-items"
+        columns:
+          - name: order_item_id
+            tests:
+              - not_null
+              - unique
+          - name: order_id
+            tests:
+              - not_null
+
+      - name: payments
+        description: "Raw payment gateway transactions"
+        columns:
+          - name: payment_id
+            tests:
+              - not_null
+              - unique
+          - name: order_id
+            tests:
+              - not_null
